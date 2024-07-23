@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+
+  worker:
+    build:
+      context: .
+      dockerfile: src/Dockerfile
+    environment:
+      - WORKER_NAME=worker1
+      - DATABASE_URL=Host=postgres;Port=5432;Username=myuser;Password=mypassword;Database=mydatabase
+    depends_on:
+      - postgres
+    deploy:
+      replicas: 3
+    ports:
+      - "5000:80"
