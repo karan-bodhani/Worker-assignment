@@ -1,4 +1,4 @@
-```markdown
+
 # DB Workload Distribution
 
 This project implements a system for horizontally scaling workers and redistributing workload based on database changes using .NET Core and PostgreSQL with Docker Compose.
@@ -20,7 +20,6 @@ This project implements a system for horizontally scaling workers and redistribu
    ```bash
    docker-compose up --build
    ```
-
 2. **Verify Services**:
    - **PostgreSQL**: Accessible on `localhost:5432`.
    - **Worker**: Accessible on `localhost:5000`.
